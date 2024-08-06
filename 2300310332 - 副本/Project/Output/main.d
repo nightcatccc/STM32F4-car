@@ -40,3 +40,4 @@
 .\output\main.o: ..\hardware\usart\Serial.h
 .\output\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\main.o: ..\hardware\Timer\Timer.h
+.\output\main.o: ..\hardware\PID\PID.h

@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F4XX, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\User;..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\Libraries\CMSIS\Include;..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\hardware\GPIO;..\hardware\OLED;..\hardware\delay;..\hardware\usart;..\hardware\Timer</IncludePath>
+              <IncludePath>..\User;..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\Libraries\CMSIS\Include;..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\hardware\GPIO;..\hardware\OLED;..\hardware\delay;..\hardware\usart;..\hardware\Timer;..\hardware\PID;..\User</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -608,6 +608,16 @@
               <FileName>Timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hardware\Timer\Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\PID\PID.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\PID\PID.h</FilePath>
             </File>
           </Files>
         </Group>

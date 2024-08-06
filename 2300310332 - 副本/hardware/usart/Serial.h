@@ -13,7 +13,7 @@ void Serial_SendByte1(uint8_t Byte);
 void Serial_SendArray1(uint8_t *Array, uint16_t Length);
 void Serial_SendString1(char *String);
 
-void Serial_Printf1(char *format, ...);
+void Serial_Printf(char *format, ...);
 
 void Serial_SendPacket1(void);
 uint8_t Serial_GetRxFlag1(void);

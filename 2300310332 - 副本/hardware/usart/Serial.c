@@ -125,9 +125,15 @@ uint32_t Serial_Pow1(uint32_t X, uint32_t Y)
   * 参    数：保持原始格式即可，无需变动
   * 返 回 值：保持原始格式即可，无需变动
   */
-int fputc(int ch, FILE *f)
+//int fputc(int ch, FILE *f)
+//{
+//	Serial_SendByte1(ch);			//将printf的底层重定向到自己的发送字节函数
+//	return ch;
+//}
+int fputc(int ch,FILE *p)  //函数默认的，在使用printf函数时自动调用
 {
-	Serial_SendByte1(ch);			//将printf的底层重定向到自己的发送字节函数
+	USART_SendData(USART1,(u8)ch);	
+	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
 	return ch;
 }
 
