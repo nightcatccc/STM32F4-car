@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -3606,9 +3606,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>..\User\main.c</Name>
-        <ColumnNumber>33</ColumnNumber>
-        <TopLine>73</TopLine>
-        <CurrentLine>83</CurrentLine>
+        <ColumnNumber>13</ColumnNumber>
+        <TopLine>82</TopLine>
+        <CurrentLine>98</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3687,9 +3687,9 @@
       </Doc>
       <Doc>
         <Name>..\hardware\usart\Serial2.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>51</TopLine>
-        <CurrentLine>1</CurrentLine>
+        <ColumnNumber>28</ColumnNumber>
+        <TopLine>216</TopLine>
+        <CurrentLine>232</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -22,6 +22,7 @@ int32_t pwmA;
 extern uint8_t RxData;
 extern uint8_t RxData2;
 extern uint8_t RxData3;
+extern uint8_t recive2[20];
 
 void stop()
 {
@@ -64,6 +65,8 @@ int k=1;
 int16_t Temp;
 int main(void)
 {   
+	double yaw;
+	int angle;
 	Serial_Init1();
 	PID__init(&PID_A,200);
 	Timer3_Init();
@@ -80,11 +83,21 @@ int main(void)
      while(1)
 		{	
 //			printf("%d\n",pwmA);
+			
+			int yaw_16t=(recive2[16] << 8 | recive2[15]);
+			yaw=(yaw_16t/32768.0)*180.0;
+			if(yaw>180)
+			{
+				angle = (int)(yaw-180);
+			}
+			else
+			{
+				angle = (int)(180-yaw);
+			}
 			if(Serial_GetRxFlag2()==1)
 			{
-				Serial_SendByte2(RxData2);
+				printf("%d\n",angle);
 			}
-			
 			OLED_ShowString(1,1,string_A,16);
 			
 			OLED_ShowNumber(1,3,count,5,16);
