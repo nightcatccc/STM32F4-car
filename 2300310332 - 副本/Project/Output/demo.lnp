@@ -41,6 +41,8 @@
 ".\output\serial.o"
 ".\output\timer.o"
 ".\output\pid.o"
+".\output\serial2.o"
+".\output\serial3.o"
 --library_type=microlib --strict --scatter ".\Output\demo.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

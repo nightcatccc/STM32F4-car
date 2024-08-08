@@ -619,6 +619,26 @@
               <FileType>5</FileType>
               <FilePath>..\hardware\PID\PID.h</FilePath>
             </File>
+            <File>
+              <FileName>Serial2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\usart\Serial2.c</FilePath>
+            </File>
+            <File>
+              <FileName>Serial2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\usart\Serial2.h</FilePath>
+            </File>
+            <File>
+              <FileName>Serial3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\usart\Serial3.c</FilePath>
+            </File>
+            <File>
+              <FileName>Serial3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hardware\usart\Serial3.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

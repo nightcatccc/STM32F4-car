@@ -41,3 +41,6 @@
 .\output\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\main.o: ..\hardware\Timer\Timer.h
 .\output\main.o: ..\hardware\PID\PID.h
+.\output\main.o: ..\hardware\delay\Delay.h
+.\output\main.o: ..\hardware\usart\Serial2.h
+.\output\main.o: ..\hardware\usart\Serial3.h

@@ -121,7 +121,7 @@ void Timer7_Init(void)//定时
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);    
 	
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	TIM_TimeBaseStructure.TIM_Period = 100-1; 	                      
+	TIM_TimeBaseStructure.TIM_Period = 200-1; 	                      
 	TIM_TimeBaseStructure.TIM_Prescaler=7200-1;                        
 	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;       
 	TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;           
@@ -140,7 +140,7 @@ void Timer7_Init(void)//定时
 	NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_InitStruct);
 	
-	TIM_Cmd(TIM7,ENABLE);
+	TIM_Cmd(TIM7,DISABLE);
 
 	
 }

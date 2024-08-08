@@ -178,7 +178,7 @@ uint8_t Serial_GetRxFlag1(void)
 	}
 	return 0;						//如果标志位为0，则返回0
 }
-
+uint8_t RxData;
 /**
   * 函    数：USART1中断函数
   * 参    数：无
@@ -192,7 +192,7 @@ void USART1_IRQHandler(void)
 
 	if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET)		//判断是否是USART1的接收事件触发的中断
 	{
-		uint8_t RxData = USART_ReceiveData(USART1);				//读取数据寄存器，存放在接收的数据变量
+		RxData = USART_ReceiveData(USART1);				//读取数据寄存器，存放在接收的数据变量
 		USART_ClearITPendingBit(USART1, USART_IT_RXNE);		//清除标志位
 		Serial_RxFlag1=1;
 	}
