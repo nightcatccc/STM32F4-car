@@ -222,6 +222,7 @@ void USART2_IRQHandler(void)
 		{
 			recive2[pRxPacket] = RxData2;		//???????????????
 			pRxPacket ++;
+			
 			if(pRxPacket==19)
 			{
 				RxState=3;

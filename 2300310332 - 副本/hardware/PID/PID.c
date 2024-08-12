@@ -35,9 +35,9 @@ float PID__ralize(PID_TypeDef *PID,float Feedback_value)
      + (PID->Derivative * (PID->Error - PID->LastError)); 
      PID->LastError = PID->Error; 
 	
-//	if(PID->ActualValue>=800){
-//		PID->ActualValue=PID->SetPoint;
-//	}
+	if(PID->ActualValue>=800){
+		PID->ActualValue=PID->SetPoint;
+	}
 
      return ((int32_t)(PID->ActualValue)); 
 
