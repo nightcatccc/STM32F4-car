@@ -44,3 +44,4 @@
 .\output\main.o: ..\hardware\delay\Delay.h
 .\output\main.o: ..\hardware\usart\Serial2.h
 .\output\main.o: ..\hardware\usart\Serial3.h
+.\output\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h

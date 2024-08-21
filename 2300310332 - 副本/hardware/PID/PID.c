@@ -1,14 +1,14 @@
 #include "stm32f4xx.h"                  // Device header
 #include "PID.h"
-
+extern int reflog;
 void PID__init(PID_TypeDef *pid , float point)
 {
 	pid-> SetPoint=point; 
 	pid-> ActualValue=0;
 	pid-> SumError=0; 
-	pid-> Proportion=1.1;
-	pid-> Integral=1.5; 
-	pid-> Derivative=0.5;
+	pid-> Proportion=1.5;
+	pid-> Integral=0; 
+	pid-> Derivative=1;
 	pid-> Error=0; 
 	pid-> LastError=0; 
 	pid-> PrevError=0; 
@@ -36,7 +36,9 @@ float PID__ralize(PID_TypeDef *PID,float Feedback_value)
      PID->LastError = PID->Error; 
 	
 	if(PID->ActualValue>=800){
-		PID->ActualValue=PID->SetPoint;
+		PID->ActualValue=800; 
+		PID->SumError=0;
+		reflog=1;
 	}
 
      return ((int32_t)(PID->ActualValue)); 

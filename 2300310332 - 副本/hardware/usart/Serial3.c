@@ -32,7 +32,7 @@ void Serial_Init3(void)
 	GPIO_Init(GPIOB,&GPIO_InitStructure); //???PA9,PA10
 
    //USART1 ?????
-	USART_InitStructure.USART_BaudRate = 115200;//?????
+	USART_InitStructure.USART_BaudRate = 9600;//?????
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//???8?????
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;//?????
 	USART_InitStructure.USART_Parity = USART_Parity_No;//??????
