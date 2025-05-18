@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Output\demo.elf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Output\demo.elf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun May 18 14:35:30 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun May 18 15:43:09 2025
 <BR><P>
-<H3>Maximum Stack Usage =        152 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        176 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; get_yaw &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 <P>
@@ -440,7 +440,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_yaw
 </UL>
 
-<P><STRONG><a name="[de]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
+<P><STRONG><a name="[df]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -549,7 +549,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;back
 </UL>
 
@@ -568,7 +568,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 </UL>
 
 <P><STRONG><a name="[78]"></a>B_b</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.B_b))
@@ -586,7 +586,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;front
 </UL>
 
@@ -595,7 +595,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 </UL>
 
 <P><STRONG><a name="[5]"></a>BusFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.BusFault_Handler))
@@ -619,7 +619,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ground
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;front
 </UL>
@@ -629,7 +629,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 </UL>
 
 <P><STRONG><a name="[7e]"></a>D_b</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.D_b))
@@ -637,7 +637,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ground
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;back
 </UL>
@@ -656,7 +656,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
 </UL>
 
 <P><STRONG><a name="[8]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.DebugMon_Handler))
@@ -977,7 +977,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ac]"></a>PID__ralize</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, pid.o(i.PID__ralize))
+<P><STRONG><a name="[ac]"></a>PID__ralize</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, pid.o(i.PID__ralize))
 <BR><BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_IRQHandler
 </UL>
 
@@ -1021,11 +1021,11 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f4xx.o(RESET)
 </UL>
-<P><STRONG><a name="[dc]"></a>Serial_GetRxFlag2</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, serial2.o(i.Serial_GetRxFlag2))
+<P><STRONG><a name="[dd]"></a>Serial_GetRxFlag2</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, serial2.o(i.Serial_GetRxFlag2))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[df]"></a>Serial_GetRxFlag3</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, serial3.o(i.Serial_GetRxFlag3))
+<P><STRONG><a name="[e0]"></a>Serial_GetRxFlag3</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, serial3.o(i.Serial_GetRxFlag3))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1124,8 +1124,8 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderC_Init
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderB_Init
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderA_Init
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ground
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;front
@@ -1399,7 +1399,7 @@ Global Symbols
 
 <P><STRONG><a name="[f0]"></a>__1printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
 
-<P><STRONG><a name="[dd]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
+<P><STRONG><a name="[de]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1483,17 +1483,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 410 bytes, Stack size 40 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = main &rArr; get_yaw &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 474 bytes, Stack size 64 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; get_yaw &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer7_Init
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_Init
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init3
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init2
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init1
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_GetRxFlag3
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_GetRxFlag2
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_GetRxFlag3
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_GetRxFlag2
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID__init
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
@@ -1503,19 +1503,19 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderB_Init
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderA_Init
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_arr_init
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_arr_init
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ground
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_yaw
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;front
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;back
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[e1]"></a>right</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, main.o(i.right))
+<P><STRONG><a name="[db]"></a>right</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, main.o(i.right))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = right &rArr; D_b
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
@@ -1527,11 +1527,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[db]"></a>send_arr_init</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, main.o(i.send_arr_init))
+<P><STRONG><a name="[dc]"></a>send_arr_init</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, main.o(i.send_arr_init))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e0]"></a>stop</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, main.o(i.stop))
+<P><STRONG><a name="[e1]"></a>stop</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, main.o(i.stop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = stop &rArr; D_s
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd

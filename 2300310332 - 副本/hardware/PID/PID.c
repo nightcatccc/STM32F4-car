@@ -30,7 +30,7 @@ float PID__ralize(PID_TypeDef *PID,float Feedback_value)
 {
 	 PID->Error = (float)(PID->SetPoint - Feedback_value); 
      //PID->SumError += PID->Error; 
-     PID->ActualValue = (PID->Proportion * PID->Error) 
+     PID->ActualValue += (PID->Proportion * PID->Error) 
      + (PID->Integral * PID->Error) 
      + (PID->Derivative * (PID->Error - PID->Error_1)); 
 	 PID->Error_2 = PID->Error_1;

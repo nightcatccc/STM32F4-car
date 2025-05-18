@@ -329,10 +329,10 @@ int main(void)
 	uint8_t yaw_h;
 	uint8_t yaw_l;
 	Serial_Init1();
-	PID__init(&PID_A,150,3,0,0.5);
-	PID__init(&PID_B,150,3,0,0.5);
-	PID__init(&PID_C,150,2.8,0,0.5);
-	PID__init(&PID_D,150,2.8,0,0.5);
+	PID__init(&PID_A,150,1.4,0.1,1.2);
+	PID__init(&PID_B,149,1.4,0.1,1.2);
+	PID__init(&PID_C,150,1.4,0.1,1.2);
+	PID__init(&PID_D,149,1.4,0.1,1.2);
 	Timer3_Init();
 	GPIO_init();               
 	OLED_Init();
@@ -342,7 +342,7 @@ int main(void)
 	EncoderC_Init();
 	EncoderD_Init();
 	Timer7_Init();
-	front ();
+	right ();
 	Serial_Init1();
 	Serial_Init2();
 	Serial_Init3();
@@ -355,7 +355,8 @@ int main(void)
 				printf("%d\n",get_yaw());
 			}
 			Delay_ms(100);
-			printf("%f,%f,%f,%f\n",pwmA,pwmB,pwmC,pwmD);
+			printf("%f,%f,%f,%f,%f\n",pwmA,pwmB,pwmC,pwmD,pwmB+pwmD-(pwmA+pwmC));
+			
 //			if(Serial_GetRxFlag3()==1)
 //			{
 //				
