@@ -45,7 +45,7 @@ void Timer3_Init(void)//pwm输出
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; //选择定时器模式:TIM脉冲宽度调制模式2
  	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; //输出极性:TIM输出比较极性高
-	TIM_OCInitStructure.TIM_Pulse=200;//pwm占空比200
+	TIM_OCInitStructure.TIM_Pulse=150;//pwm占空比200
 	TIM_OC1Init(TIM3, &TIM_OCInitStructure);  //根据T指定的参数初始化外设
 	TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);  //使能TIM3在CCR1上的预装载寄存器
 	
@@ -118,7 +118,7 @@ void Timer7_Init(void)//定时
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);    
 	
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	TIM_TimeBaseStructure.TIM_Period = 200-1; 	                      
+	TIM_TimeBaseStructure.TIM_Period = 500-1; 	                      
 	TIM_TimeBaseStructure.TIM_Prescaler=7200-1;                        
 	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;       
 	TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;           

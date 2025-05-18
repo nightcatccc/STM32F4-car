@@ -276,7 +276,7 @@ Section Cross References
     main.o(i.main) refers to timer.o(i.EncoderC_Init) for EncoderC_Init
     main.o(i.main) refers to timer.o(i.EncoderD_Init) for EncoderD_Init
     main.o(i.main) refers to timer.o(i.Timer7_Init) for Timer7_Init
-    main.o(i.main) refers to main.o(i.right) for right
+    main.o(i.main) refers to main.o(i.front) for front
     main.o(i.main) refers to serial2.o(i.Serial_Init2) for Serial_Init2
     main.o(i.main) refers to serial3.o(i.Serial_Init3) for Serial_Init3
     main.o(i.main) refers to main.o(i.send_arr_init) for send_arr_init
@@ -287,7 +287,7 @@ Section Cross References
     main.o(i.main) refers to f2d.o(.text) for __aeabi_f2d
     main.o(i.main) refers to serial3.o(i.Serial_GetRxFlag3) for Serial_GetRxFlag3
     main.o(i.main) refers to main.o(i.stop) for stop
-    main.o(i.main) refers to main.o(i.front) for front
+    main.o(i.main) refers to main.o(i.right) for right
     main.o(i.main) refers to main.o(i.left) for left
     main.o(i.main) refers to main.o(i.back) for back
     main.o(i.main) refers to main.o(i.ground) for ground
