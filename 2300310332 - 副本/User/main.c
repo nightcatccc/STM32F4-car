@@ -64,12 +64,12 @@ int D_status;
 int k=1;
 int16_t Temp;
 int flag = 0;
+int flag_2 = 0;
 
 int timer_flog;
 
 extern uint8_t RxData;
 extern uint8_t RxData2;
-extern uint8_t RxData3;
 extern uint8_t recive2[20];
 extern uint8_t send1[11];
 
@@ -195,8 +195,6 @@ void D_s()
 }
 
 
-
-
 void stop()
 {
 	TIM_Cmd(TIM7,DISABLE);
@@ -206,7 +204,24 @@ void stop()
 	reflog=1;
 	}
 	A_s();
+	Delay_ms(500);	
+	B_s();
+	C_s();
+	D_s();
 	
+	
+	state_yet=car_status;
+}
+
+void stop_2()
+{
+	TIM_Cmd(TIM7,DISABLE);
+	timer_flog=1;
+	car_status=0;//停止   车辆行进状态表示
+	if (state_yet!=car_status){
+	reflog=1;
+	}
+	A_s();
 	B_s();
 	C_s();
 	D_s();
@@ -216,17 +231,16 @@ void stop()
 }
 
 void front(void){
-	
-	TIM_SetCompare2(TIM3,150);
-	TIM_SetCompare3(TIM3,149);
 	TIM_SetCompare1(TIM3,150);
-	TIM_SetCompare4(TIM3,149);
+	TIM_SetCompare2(TIM3,150);
+	TIM_SetCompare3(TIM3,150);
+	TIM_SetCompare4(TIM3,150);
 	Delay_ms(80);
 	PID__init(&PID_A,150,1.4,0.1,1.2);
-	PID__init(&PID_B,149,1.4,0.1,1.2);
+	PID__init(&PID_B,150,1.4,0.1,1.2);
 	PID__init(&PID_C,150,1.4,0.1,1.2);
-	PID__init(&PID_D,149,1.4,0.1,1.2);
-	TIM_Cmd(TIM7,ENABLE);
+	PID__init(&PID_D,150,1.4,0.1,1.2);
+	
 	timer_flog=0;
 	
 	car_status=1;//前进
@@ -237,6 +251,7 @@ void front(void){
 	B_f();
 	C_f();
 	D_f();
+	TIM_Cmd(TIM7,ENABLE);
 }
 
 void right(void)
@@ -265,16 +280,15 @@ void right(void)
 }
 void left(void)
 {
-	
+	TIM_SetCompare1(TIM3,81);
 	TIM_SetCompare2(TIM3,80);
-	TIM_SetCompare3(TIM3,80);
-	TIM_SetCompare1(TIM3,80);
-	TIM_SetCompare4(TIM3,81);
+	TIM_SetCompare3(TIM3,79);
+	TIM_SetCompare4(TIM3,80);
 	Delay_ms(80);
-	PID__init(&PID_A,80,1.4,0.1,1.2);
+	PID__init(&PID_A,81,1.4,0.1,1.2);
 	PID__init(&PID_B,80,1.4,0.1,1.2);
-	PID__init(&PID_C,80,1.4,0.1,1.2);
-	PID__init(&PID_D,81,1.4,0.1,1.2);
+	PID__init(&PID_C,79,1.4,0.1,1.2);
+	PID__init(&PID_D,80,1.4,0.1,1.2);
 	TIM_Cmd(TIM7,ENABLE);
 	
 	timer_flog=0;
@@ -282,8 +296,9 @@ void left(void)
 	if (state_yet!=car_status){
 	reflog=1;
 	}
-	A_f();
+	
 	B_b();
+	A_f();
 	C_b();
 	D_f();
 	state_yet=car_status;
@@ -294,13 +309,13 @@ void ground(void)
 	
 	TIM_SetCompare2(TIM3,80);
 	TIM_SetCompare3(TIM3,80);
-	TIM_SetCompare1(TIM3,80);
-	TIM_SetCompare4(TIM3,81);
+	TIM_SetCompare3(TIM3,79);
+	TIM_SetCompare4(TIM3,80);
 	Delay_ms(80);
 	PID__init(&PID_A,80,1.4,0.1,1.2);
 	PID__init(&PID_B,80,1.4,0.1,1.2);
 	PID__init(&PID_C,80,1.4,0.1,1.2);
-	PID__init(&PID_D,81,1.4,0.1,1.2);
+	PID__init(&PID_D,80,1.4,0.1,1.2);
 	TIM_Cmd(TIM7,ENABLE);
 	timer_flog=0;
 	car_status=5;//旋转
@@ -330,7 +345,7 @@ void back()
 	timer_flog=0;
 	car_status=4;//后退	
 	if (state_yet!=car_status){
-	reflog=1;
+		reflog=1;
 	}
 	A_b();
 	B_b();
@@ -390,26 +405,50 @@ int main(void)
 	EncoderC_Init();
 	EncoderD_Init();
 	Timer7_Init();
-	stop ();
+	stop();
 	Serial_Init1();
 	Serial_Init2();
 	Serial_Init3();
 	send_arr_init();
 	Delay_ms(500);
+	front();
      while(1)
 		{	
-			front ();
-//			if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_7) == 1 && flag == 0)
-//			{
-				Delay_ms(6000);
-				stop();
-				Delay_ms(500);
+//			printf("%d\n",A_status);
+////			GPIO_WriteBit(GPIOF,GPIO_Pin_3,Bit_SET);//AIN1右前
+////			GPIO_WriteBit(GPIOF,GPIO_Pin_4,Bit_SET);//AIN2
+//			stop_2();
+//			printf("%d\n",A_status);
+//			Delay_ms(20000);
+			
+//			PID_A.SetPoint=80;
+//			
+////			stop_2();
+//			
+			if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag == 0)
+			{
+				stop_2();
+				Delay_ms(3000);
 				left ();
-				Delay_ms(10000);
-				stop();
+				Delay_ms(4050);
+				stop_2();
 				Delay_ms(500);
-//				flag = 1;
-//			}
+				ground();
+				Delay_ms(5850);
+				stop_2();
+				Delay_ms(500);
+				front();
+				while(1){
+					if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag_2 == 0)
+					{
+						stop_2();
+						Delay_ms(500);
+						flag_2 = 1;
+					}
+				}
+				flag = 1;
+				Serial_SendByte3(0x11);
+			}
 //			if(flag==1){
 //				
 //			}
@@ -420,7 +459,7 @@ int main(void)
 //				printf("%d\n",get_yaw());
 //			}
 //			Delay_ms(100);
-//			printf("%f,%f,%f,%f\n",pwmA,pwmB,pwmC,pwmD);
+			
 			
 //			if(Serial_GetRxFlag3()==1)
 //			{
@@ -433,14 +472,26 @@ int main(void)
 //					state_chg=0;
 //				}
 //			}
-
-//			if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_7) == 1 && flag == 0)
+//			if(Serial_GetRxFlag3()==1)
 //			{
-//				Delay_ms(100);
-//				right ();
-//				flag = 1;
+//				if(RxData3[0] >= 0 && RxData3[1] >= 0)
+//				{
+//					
+//				}
+//				if(RxData3[0] >= 0 && RxData3[1] <= 0)
+//				{
+//					
+//				}
+//				if(RxData3[0] <= 0 && RxData3[1] >= 0)
+//				{
+//					
+//				}
+//				if(RxData3[0] <= 0 && RxData3[1] <= 0)
+//				{
+//					
+//				}
 //			}
-//			
+
 			
 //			if(Serial_GetRxFlag3()==1)
 //			{
@@ -506,6 +557,7 @@ int main(void)
 void TIM7_IRQHandler()//20ms定时器
 {
 	if(TIM_GetITStatus(TIM7, TIM_IT_Update) == SET){
+			printf("%d,%d,%d,%d\n",speed_A,speed_B,speed_C,speed_D);
 			count++;
 			speed_A = EncoderB_Get();
 			speed_B = EncoderC_Get();
@@ -525,8 +577,9 @@ void TIM7_IRQHandler()//20ms定时器
 				if(pwmA>0&&A_status==1 ){
 				GPIO_WriteBit(GPIOF,GPIO_Pin_3,Bit_RESET);
 				GPIO_WriteBit(GPIOF,GPIO_Pin_4,Bit_SET);
+					
 				}
-				else if(pwmA<0&&(A_status==3 || A_status==1)){
+				else if(pwmA<0&&A_status==3){
 				GPIO_WriteBit(GPIOF,GPIO_Pin_3,Bit_SET);
 				GPIO_WriteBit(GPIOF,GPIO_Pin_4,Bit_RESET);
 				pwmA=-pwmA;
@@ -561,7 +614,7 @@ void TIM7_IRQHandler()//20ms定时器
 				GPIO_WriteBit(GPIOF,GPIO_Pin_8,Bit_SET);//AIN2
 				pwmD=-pwmD;
 				}
-				
+//				
 				newspeed_A=(int)PID__ralize(&PID_A,(float)pwmA);
 				newspeed_B=(int)PID__ralize(&PID_B,(float)pwmB);
 				newspeed_C=(int)PID__ralize(&PID_C,(float)pwmC);
@@ -574,11 +627,11 @@ void TIM7_IRQHandler()//20ms定时器
 //				
 			}
 			reflog=0;
-//			
-//		
-//		
-//		
-//		
+			
+		
+		
+		
+		
 		TIM_ClearITPendingBit(TIM7, TIM_IT_Update);
 	}
 }

@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 //extern uint8_t Serial_TxPacket1[];
-//extern uint8_t Serial_RxPacket1[];
 //extern uint8_t ATS[6];
 //extern uint8_t STA[8];
+extern uint8_t RxData3[];
 
 void Serial_Init3(void);
 void Serial_SendByte3(uint8_t Byte);

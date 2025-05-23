@@ -161,7 +161,7 @@ uint32_t Serial_Pow3(uint32_t X, uint32_t Y)
   */
 void Serial_SendPacket3(void)
 {
-	;	
+	
 }
 
 /**
@@ -178,7 +178,7 @@ uint8_t Serial_GetRxFlag3(void)
 	}
 	return 0;						//??????0,???0
 }
-uint8_t RxData3;
+uint8_t RxData3[3];
 /**
   * ?    ?:USART1????
   * ?    ?:?
@@ -189,10 +189,14 @@ uint8_t RxData3;
   */
 void USART3_IRQHandler(void)
 {
-
+	static int i = 0;
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) == SET)		//?????USART1??????????
 	{
-		RxData3 = USART_ReceiveData(USART3);				//???????,??????????
+		
+		RxData3[i] = USART_ReceiveData(USART3);
+		i++;
+		if(i == 2) 
+			i = 0;
 		USART_ClearITPendingBit(USART3, USART_IT_RXNE);		//?????
 		Serial_RxFlag3=1;
 	}
