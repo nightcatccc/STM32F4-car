@@ -178,7 +178,7 @@ uint8_t Serial_GetRxFlag3(void)
 	}
 	return 0;						//??????0,???0
 }
-uint8_t RxData3[3];
+uint8_t RxData3;
 /**
   * ?    ?:USART1????
   * ?    ?:?
@@ -189,14 +189,10 @@ uint8_t RxData3[3];
   */
 void USART3_IRQHandler(void)
 {
-	static int i = 0;
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) == SET)		//?????USART1??????????
 	{
 		
-		RxData3[i] = USART_ReceiveData(USART3);
-		i++;
-		if(i == 2) 
-			i = 0;
+		RxData3 = USART_ReceiveData(USART3);
 		USART_ClearITPendingBit(USART3, USART_IT_RXNE);		//?????
 		Serial_RxFlag3=1;
 	}

@@ -188,6 +188,7 @@ uint8_t RxData2;
   *           ????????,???????,???????????
   */
 uint8_t recive2[20];
+extern int angle;
 void USART2_IRQHandler(void)
 {
 	static uint8_t RxState = 0;		//????????????????
@@ -230,9 +231,23 @@ void USART2_IRQHandler(void)
 		}
 		else if (RxState==3)			//?????????
 			{
+				double yaw;
+				int yaw_16t=(recive2[16] << 8 | recive2[15]);//???
+				yaw=(yaw_16t/32768.0)*180.0;
+				if(yaw>180)
+				{
+					angle = (int)(yaw-180)-180;
+				}
+				else
+				{
+					angle = 180-(int)(180-yaw);
+				}
+				
 				RxState = 0;			
 				Serial_RxFlag2 = 1;	
 			}
+			
+			
 		USART_ClearITPendingBit(USART2, USART_IT_RXNE);			//?????
 	}
 	

@@ -65,6 +65,8 @@ int k=1;
 int16_t Temp;
 int flag = 0;
 int flag_2 = 0;
+int flag_3 = 0;
+int flag_4 = 0;
 
 int timer_flog;
 
@@ -257,27 +259,29 @@ void front(void){
 void right(void)
 {
 	
-	TIM_SetCompare2(TIM3,80);
+	TIM_SetCompare2(TIM3,81);
 	TIM_SetCompare3(TIM3,80);
-	TIM_SetCompare1(TIM3,80);
-	TIM_SetCompare4(TIM3,81);
+	TIM_SetCompare1(TIM3,79);
+	TIM_SetCompare4(TIM3,80);
 	Delay_ms(80);
-	PID__init(&PID_A,80,1.4,0.1,1.2);
+	PID__init(&PID_A,81,1.4,0.1,1.2);
 	PID__init(&PID_B,80,1.4,0.1,1.2);
-	PID__init(&PID_C,80,1.4,0.1,1.2);
-	PID__init(&PID_D,81,1.4,0.1,1.2);
+	PID__init(&PID_C,79,1.4,0.1,1.2);
+	PID__init(&PID_D,80,1.4,0.1,1.2);
 	TIM_Cmd(TIM7,ENABLE);
 	timer_flog=0;
 	car_status=2;//右转
 	if (state_yet!=car_status){
 	reflog=1;
 	}
-	A_b();	
+		
 	B_f();
+	A_b();
 	C_f();
 	D_b();
 	state_yet=car_status;
 }
+
 void left(void)
 {
 	TIM_SetCompare1(TIM3,81);
@@ -304,7 +308,7 @@ void left(void)
 	state_yet=car_status;
 }
 
-void ground(void)
+void ground_left(void)
 {
 	
 	TIM_SetCompare2(TIM3,80);
@@ -326,6 +330,87 @@ void ground(void)
 	B_b();
 	C_f();
 	D_b();
+	state_yet=car_status;
+}
+
+
+
+
+void ground_left_weitiao(void)//微调时使用，未测试过
+{
+	
+	TIM_SetCompare2(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare4(TIM3,30);
+	Delay_ms(20);
+	PID__init(&PID_A,30,1.4,0.1,1.2);
+	PID__init(&PID_B,30,1.4,0.1,1.2);
+	PID__init(&PID_C,30,1.4,0.1,1.2);
+	PID__init(&PID_D,30,1.4,0.1,1.2);
+	TIM_Cmd(TIM7,ENABLE);
+	timer_flog=0;
+	car_status=5;//旋转
+	if (state_yet!=car_status){
+	reflog=1;
+	}
+	A_f();
+	B_b();
+	C_f();
+	D_b();
+	state_yet=car_status;
+}
+
+
+
+
+void ground_right(void)
+{
+	
+	TIM_SetCompare2(TIM3,80);
+	TIM_SetCompare3(TIM3,80);
+	TIM_SetCompare3(TIM3,79);
+	TIM_SetCompare4(TIM3,80);
+	Delay_ms(80);
+	PID__init(&PID_A,80,1.4,0.1,1.2);
+	PID__init(&PID_B,80,1.4,0.1,1.2);
+	PID__init(&PID_C,80,1.4,0.1,1.2);
+	PID__init(&PID_D,80,1.4,0.1,1.2);
+	TIM_Cmd(TIM7,ENABLE);
+	timer_flog=0;
+	car_status=5;//旋转
+	if (state_yet!=car_status){
+	reflog=1;
+	}
+	A_b();
+	B_f();
+	C_b();
+	D_f();
+	state_yet=car_status;
+}
+
+void ground_right_weitiao(void)//微调时使用，未测试过
+{
+	
+	TIM_SetCompare2(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare4(TIM3,30);
+	Delay_ms(20);
+	PID__init(&PID_A,30,1.4,0.1,1.2);
+	PID__init(&PID_B,30,1.4,0.1,1.2);
+	PID__init(&PID_C,30,1.4,0.1,1.2);
+	PID__init(&PID_D,30,1.4,0.1,1.2);
+	TIM_Cmd(TIM7,ENABLE);
+	timer_flog=0;
+	car_status=5;//旋转
+	if (state_yet!=car_status){
+	reflog=1;
+	}
+	A_b();
+	B_f();
+	C_b();
+	D_f();
 	state_yet=car_status;
 }
 
@@ -355,9 +440,10 @@ void back()
 }
 
 int state_chg;
+int angle;
 int get_yaw(void)
 {
-	int angle;
+	int angle_t;
 	double yaw;
 	int yaw_16t=(recive2[16] << 8 | recive2[15]);//航偏角
 			yaw=(yaw_16t/32768.0)*180.0;
@@ -369,7 +455,8 @@ int get_yaw(void)
 			{
 				angle = 180-(int)(180-yaw);
 			}
-	return angle;
+		angle_t=angle;
+	return angle_t;
 }
 
 double get_wz(void)
@@ -382,6 +469,148 @@ double get_wz(void)
 			}
 	WZ=(Wz_16t/32768.0)*2000.0;
 	return WZ;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************未测试*************************************************/
+
+void ground_left_to_0(void)
+{
+		TIM_SetCompare2(TIM3,30);
+		TIM_SetCompare3(TIM3,30);
+		TIM_SetCompare3(TIM3,30);
+		TIM_SetCompare4(TIM3,30);
+		Delay_ms(80);
+		PID__init(&PID_A,30,1.4,0.1,1.2);
+		PID__init(&PID_B,30,1.4,0.1,1.2);
+		PID__init(&PID_C,30,1.4,0.1,1.2);
+		PID__init(&PID_D,30,1.4,0.1,1.2);
+		TIM_Cmd(TIM7,ENABLE);
+		timer_flog=0;
+		car_status=5;//旋转
+		if (state_yet!=car_status){
+		reflog=1;
+		}
+		A_f();
+		B_b();
+		C_f();
+		D_b();
+		state_yet=car_status;
+		while(1){
+				if(Serial_GetRxFlag2()==1)
+				{
+					//printf("%d\n",angle);
+					if(-angle<2&&angle<0)break;
+					//if(angle+180<2&&angle<0)break;
+				}
+			}
+		stop_2();
+}
+void ground_right_to_0(void)
+{
+	
+	TIM_SetCompare2(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare3(TIM3,30);
+	TIM_SetCompare4(TIM3,30);
+	Delay_ms(80);
+	PID__init(&PID_A,30,1.4,0.1,1.2);
+	PID__init(&PID_B,30,1.4,0.1,1.2);
+	PID__init(&PID_C,30,1.4,0.1,1.2);
+	PID__init(&PID_D,30,1.4,0.1,1.2);
+	TIM_Cmd(TIM7,ENABLE);
+	timer_flog=0;
+	car_status=5;//旋转
+	if (state_yet!=car_status){
+	reflog=1;
+	}
+	A_b();
+	B_f();
+	C_b();
+	D_f();
+	state_yet=car_status;
+	while(1){
+				if(Serial_GetRxFlag2()==1)
+				{
+					//printf("%d\n",angle);
+					if(angle-0<2&&angle>0)break;
+					//if(angle+180<2&&angle<0)break;
+				}
+			}
+	stop_2();
+}
+
+void to_0(void)
+{
+	if(Serial_GetRxFlag2()==1)
+				{
+					//printf("%d\n",angle);
+					if(angle>1){
+						ground_right_to_0();
+					}
+					else if(angle<-1){
+						ground_left_to_0();
+					}
+					//if(angle+180<2&&angle<0)break;
+				}
+}
+
+
+
+/****************************未测试*************************************************/
+
+
+
+
+
+
+
+
+
+
+void ground_left_to_180(void)
+{
+		int data;
+		TIM_SetCompare2(TIM3,80);
+		TIM_SetCompare3(TIM3,80);
+		TIM_SetCompare3(TIM3,79);
+		TIM_SetCompare4(TIM3,80);
+		Delay_ms(80);
+		PID__init(&PID_A,80,1.4,0.1,1.2);
+		PID__init(&PID_B,80,1.4,0.1,1.2);
+		PID__init(&PID_C,80,1.4,0.1,1.2);
+		PID__init(&PID_D,80,1.4,0.1,1.2);
+		TIM_Cmd(TIM7,ENABLE);
+		timer_flog=0;
+		car_status=5;//旋转
+		if (state_yet!=car_status){
+		reflog=1;
+		}
+		A_f();
+		B_b();
+		C_f();
+		D_b();
+		state_yet=car_status;
+		while(1){
+				if(Serial_GetRxFlag2()==1)
+				{
+					printf("%d\n",angle);
+					if(180-angle<9&&angle>0)break;
+					//if(angle+180<2&&angle<0)break;
+				}
+				Delay_ms(100);
+			}
+			stop_2();
 }
 
 
@@ -411,20 +640,11 @@ int main(void)
 	Serial_Init3();
 	send_arr_init();
 	Delay_ms(500);
+//	Serial_SendString3("ok");
+//	Delay_ms(20000);
 	front();
      while(1)
 		{	
-//			printf("%d\n",A_status);
-////			GPIO_WriteBit(GPIOF,GPIO_Pin_3,Bit_SET);//AIN1右前
-////			GPIO_WriteBit(GPIOF,GPIO_Pin_4,Bit_SET);//AIN2
-//			stop_2();
-//			printf("%d\n",A_status);
-//			Delay_ms(20000);
-			
-//			PID_A.SetPoint=80;
-//			
-////			stop_2();
-//			
 			if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag == 0)
 			{
 				stop_2();
@@ -433,131 +653,99 @@ int main(void)
 				Delay_ms(4050);
 				stop_2();
 				Delay_ms(500);
-				ground();
-				Delay_ms(5850);
-				stop_2();
-				Delay_ms(500);
-				front();
-				while(1){
-					if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag_2 == 0)
+				Serial_SendString3("ok");
+				Delay_ms(2000);
+				
+				while(1)
+				{
+					if(flag_2 == 0 && Serial_GetRxFlag3()==1)
 					{
-						stop_2();
+						if(RxData3 == '1')
+						{
+							ground_left();
+							Delay_ms(400);
+							stop_2();
+							flag_2 = 1;
+							Serial_SendString3("or");
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+						}
+						if(RxData3 == '2')
+						{
+							ground_right();
+							Delay_ms(400);
+							stop_2();
+							flag_2 = 1;
+							Serial_SendString3("or");
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+							Delay_ms(10000);
+						}
+					}
+					if(flag_2 == 1)
+					{
+						ground_left_to_180();
 						Delay_ms(500);
-						flag_2 = 1;
+						front();
+						while(1)
+						{
+							if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag_3 == 0)
+							{
+								stop_2();
+								flag_3 = 1;
+								Delay_ms(500);
+								Serial_SendString3("ov");
+								Delay_ms(10000);
+								while(1)
+								{
+									if(flag_4 == 0 && Serial_GetRxFlag3()==1)
+									{
+										if(RxData3 == '4')
+										{
+											right();
+											Delay_ms(1000);
+											stop_2();
+											flag_4 = 1;
+											Serial_SendString3("om");
+											Delay_ms(10000);
+										}
+										if(RxData3 == '5')
+										{
+											left();
+											Delay_ms(1000);
+											stop_2();
+											flag_4 = 1;
+											Serial_SendString3("om");
+											Delay_ms(10000);
+										}
+									}
+								}
+							}
+						}
 					}
 				}
-				flag = 1;
-				Serial_SendByte3(0x11);
 			}
-//			if(flag==1){
+//				ground_left();
+//				Delay_ms(5850);
+//				stop_2();
+//				Delay_ms(500);
+//				front();
 //				
-//			}
-			
-//			if(Serial_GetRxFlag2()==1)
-//			{
-////				printf("%f\n",get_wz());
-//				printf("%d\n",get_yaw());
-//			}
-//			Delay_ms(100);
-			
-			
-//			if(Serial_GetRxFlag3()==1)
-//			{
-//				
-//				if(RxData3==0x01)
-//				{
-//					front();
-////					TIM_Cmd(TIM7,ENABLE);
-////					A_f();
-//					state_chg=0;
-//				}
-//			}
-//			if(Serial_GetRxFlag3()==1)
-//			{
-//				if(RxData3[0] >= 0 && RxData3[1] >= 0)
-//				{
-//					
-//				}
-//				if(RxData3[0] >= 0 && RxData3[1] <= 0)
-//				{
-//					
-//				}
-//				if(RxData3[0] <= 0 && RxData3[1] >= 0)
-//				{
-//					
-//				}
-//				if(RxData3[0] <= 0 && RxData3[1] <= 0)
-//				{
-//					
-//				}
-//			}
-
-			
-//			if(Serial_GetRxFlag3()==1)
-//			{
-//				stop();
-//				Delay_ms(500); 
-//				{
-//					if(RxData3==0x01)
-//					{
-//						front();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//					else if(RxData3==0x02)
-//					{
-//						right();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//					else if(RxData3==0x03)
-//					{
-//						left();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//					else if(RxData3==0x04)
-//					{
-//						back();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//					else if(RxData3==0x05)
-//					{
-//						ground();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//					else if(RxData3==0x00)
-//					{
-//						stop();
-//						if(state_chg!=0){
-//						reflog=1;
-//						}
-//						state_chg=0;
-//					}
-//				}
-			}
-//			send_arr_update();
-
-//		}
+//				flag = 1;
+//				Serial_SendByte3(0x11);
+		}
 }
 
 
 void TIM7_IRQHandler()//20ms定时器
 {
 	if(TIM_GetITStatus(TIM7, TIM_IT_Update) == SET){
-			printf("%d,%d,%d,%d\n",speed_A,speed_B,speed_C,speed_D);
+			//printf("%d,%d,%d,%d\n",speed_A,speed_B,speed_C,speed_D);
 			count++;
 			speed_A = EncoderB_Get();
 			speed_B = EncoderC_Get();

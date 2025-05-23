@@ -28,19 +28,21 @@ Project File Date:  08/09/2024
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil5\ARM\ARMCC\Bin'
 Build target 'TemplateSTM32F4'
 compiling main.c...
-..\User\main.c(449): warning:  #111-D: statement is unreachable
-  				flag = 1;
-..\User\main.c(395): warning:  #177-D: variable "yaw"  was declared but never referenced
+..\User\main.c(477): warning:  #177-D: variable "data"  was declared but never referenced
+  		int data;
+..\User\main.c(511): warning:  #177-D: variable "data"  was declared but never referenced
+  		int data;
+..\User\main.c(552): warning:  #177-D: variable "yaw"  was declared but never referenced
   	int yaw;
-..\User\main.c(396): warning:  #177-D: variable "yaw_h"  was declared but never referenced
+..\User\main.c(553): warning:  #177-D: variable "yaw_h"  was declared but never referenced
   	uint8_t yaw_h;
-..\User\main.c(397): warning:  #177-D: variable "yaw_l"  was declared but never referenced
+..\User\main.c(554): warning:  #177-D: variable "yaw_l"  was declared but never referenced
   	uint8_t yaw_l;
-..\User\main.c: 4 warnings, 0 errors
+..\User\main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=11856 RO-data=424 RW-data=144 ZI-data=1200  
+Program Size: Code=13204 RO-data=424 RW-data=148 ZI-data=1204  
 FromELF: creating hex file...
-".\Output\demo.elf" - 0 Error(s), 4 Warning(s).
+".\Output\demo.elf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -63,7 +65,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE@6.1.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
