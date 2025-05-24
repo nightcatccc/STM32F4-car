@@ -473,17 +473,6 @@ double get_wz(void)
 
 
 
-
-
-
-
-
-
-
-
-
-/****************************未测试*************************************************/
-
 void ground_left_to_0(void)
 {
 		TIM_SetCompare2(TIM3,30);
@@ -510,7 +499,7 @@ void ground_left_to_0(void)
 				if(Serial_GetRxFlag2()==1)
 				{
 					//printf("%d\n",angle);
-					if(-angle<2&&angle<0)break;
+					if(-angle<3&&angle<0)break;
 					//if(angle+180<2&&angle<0)break;
 				}
 			}
@@ -543,7 +532,7 @@ void ground_right_to_0(void)
 				if(Serial_GetRxFlag2()==1)
 				{
 					//printf("%d\n",angle);
-					if(angle-0<2&&angle>0)break;
+					if(angle-0<3&&angle>0)break;
 					//if(angle+180<2&&angle<0)break;
 				}
 			}
@@ -567,7 +556,7 @@ void to_0(void)
 
 
 
-/****************************未测试*************************************************/
+
 
 
 
@@ -580,16 +569,15 @@ void to_0(void)
 
 void ground_left_to_180(void)
 {
-		int data;
-		TIM_SetCompare2(TIM3,80);
-		TIM_SetCompare3(TIM3,80);
-		TIM_SetCompare3(TIM3,79);
-		TIM_SetCompare4(TIM3,80);
+		TIM_SetCompare2(TIM3,30);
+		TIM_SetCompare3(TIM3,30);
+		TIM_SetCompare3(TIM3,30);
+		TIM_SetCompare4(TIM3,30);
 		Delay_ms(80);
-		PID__init(&PID_A,80,1.4,0.1,1.2);
-		PID__init(&PID_B,80,1.4,0.1,1.2);
-		PID__init(&PID_C,80,1.4,0.1,1.2);
-		PID__init(&PID_D,80,1.4,0.1,1.2);
+		PID__init(&PID_A,30,1.4,0.1,1.2);
+		PID__init(&PID_B,30,1.4,0.1,1.2);
+		PID__init(&PID_C,30,1.4,0.1,1.2);
+		PID__init(&PID_D,30,1.4,0.1,1.2);
 		TIM_Cmd(TIM7,ENABLE);
 		timer_flog=0;
 		car_status=5;//旋转
@@ -605,7 +593,7 @@ void ground_left_to_180(void)
 				if(Serial_GetRxFlag2()==1)
 				{
 					printf("%d\n",angle);
-					if(180-angle<9&&angle>0)break;
+					if(180-angle<4&&angle>0)break;
 					//if(angle+180<2&&angle<0)break;
 				}
 				Delay_ms(100);
@@ -643,49 +631,57 @@ int main(void)
 //	Serial_SendString3("ok");
 //	Delay_ms(20000);
 	front();
+
      while(1)
 		{	
+			
 			if(GPIO_ReadInputDataBit(GPIOG, GPIO_Pin_7) == 1 && flag == 0)
 			{
 				stop_2();
-				Delay_ms(3000);
+				Delay_ms(1000);
 				left ();
-				Delay_ms(4050);
+				Delay_ms(3950);
 				stop_2();
 				Delay_ms(500);
 				Serial_SendString3("ok");
-				Delay_ms(2000);
-				
 				while(1)
 				{
-					if(flag_2 == 0 && Serial_GetRxFlag3()==1)
+					if(flag_2 == 0 )
 					{
-						if(RxData3 == '1')
-						{
-							ground_left();
-							Delay_ms(400);
-							stop_2();
-							flag_2 = 1;
-							Serial_SendString3("or");
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-						}
-						if(RxData3 == '2')
-						{
-							ground_right();
-							Delay_ms(400);
-							stop_2();
-							flag_2 = 1;
-							Serial_SendString3("or");
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-							Delay_ms(10000);
-						}
+						//printf("to_0 is ERROR\n");
+						to_0();
+						//printf("to_0 is current\n");
+						Delay_ms(500);
+						Serial_SendString3("or");
+						Delay_ms(15000);
+						Delay_ms(10000);
+						flag_2 = 1;
+//						if(RxData3 == '1')
+//						{
+//							ground_left();
+//							Delay_ms(400);
+//							stop_2();
+//							flag_2 = 1;
+//							Serial_SendString3("or");
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//						}
+//						if(RxData3 == '2')
+//						{
+//							ground_right();
+//							Delay_ms(400);
+//							stop_2();
+//							flag_2 = 1;
+//							Serial_SendString3("or");
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//							Delay_ms(10000);
+//						}
 					}
 					if(flag_2 == 1)
 					{
@@ -699,28 +695,53 @@ int main(void)
 								stop_2();
 								flag_3 = 1;
 								Delay_ms(500);
-								Serial_SendString3("ov");
-								Delay_ms(10000);
+								Serial_SendString3("oc");
+								
 								while(1)
 								{
 									if(flag_4 == 0 && Serial_GetRxFlag3()==1)
 									{
-										if(RxData3 == '4')
+										if(RxData3 == '0')
 										{
-											right();
-											Delay_ms(1000);
-											stop_2();
 											flag_4 = 1;
-											Serial_SendString3("om");
+											Serial_SendString3("or");
 											Delay_ms(10000);
 										}
-										if(RxData3 == '5')
+										if(RxData3 == '1')
 										{
-											left();
-											Delay_ms(1000);
+											right();
+											Delay_ms(300);
 											stop_2();
 											flag_4 = 1;
-											Serial_SendString3("om");
+											Serial_SendString3("or");
+											Delay_ms(10000);
+										}
+										if(RxData3 == '2')
+										{
+											right();
+											Delay_ms(600);
+											stop_2();
+											flag_4 = 1;
+											Serial_SendString3("or");
+											Delay_ms(10000);
+										}
+										
+										if(RxData3 == '3')
+										{
+											left();
+											Delay_ms(300);
+											stop_2();
+											flag_4 = 1;
+											Serial_SendString3("or");
+											Delay_ms(10000);
+										}
+										if(RxData3 == '4')
+										{
+											left();
+											Delay_ms(600);
+											stop_2();
+											flag_4 = 1;
+											Serial_SendString3("or");
 											Delay_ms(10000);
 										}
 									}
@@ -730,6 +751,21 @@ int main(void)
 					}
 				}
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 //				ground_left();
 //				Delay_ms(5850);
 //				stop_2();
